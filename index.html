@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moneystep — Legal</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --surface: #141416;
+      --border: #222226;
+      --accent: #c8f04a;
+      --accent-dim: rgba(200,240,74,0.12);
+      --text: #e8e8ec;
+      --text-muted: #7a7a85;
+      --text-dim: #4a4a55;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --radius: 12px;
+      --max: 760px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,15,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      gap: 16px;
+    }
+
+    .wordmark {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--accent-dim);
+    }
+
+    /* HERO */
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 72px 24px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 6vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 540px;
+    }
+
+    .hero-meta {
+      margin-top: 32px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .meta-value {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* TOC */
+    .toc-wrapper {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 48px 24px 0;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 540px) {
+      .toc-grid { grid-template-columns: 1fr; }
+    }
+
+    .toc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .toc-card:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .toc-number {
+      font-family: var(--serif);
+      font-size: 28px;
+      color: var(--text-dim);
+      line-height: 1;
+      min-width: 28px;
+    }
+
+    .toc-card:hover .toc-number { color: var(--accent); }
+
+    .toc-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .toc-section {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .toc-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 64px 24px 120px;
+    }
+
+    /* DOCUMENT SECTION */
+    .doc-section {
+      margin-bottom: 80px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 4px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .section-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 38px);
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.15;
+    }
+
+    /* ARTICLE */
+    article { display: flex; flex-direction: column; gap: 40px; }
+
+    .clause {
+      padding-left: 24px;
+      border-left: 2px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    .clause:hover { border-left-color: var(--accent); }
+
+    .clause h3 {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .clause p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .clause p:last-child { margin-bottom: 0; }
+
+    .clause ul, .clause ol {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .clause li {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .clause li::marker { color: var(--accent); }
+
+    /* CALLOUT */
+    .callout {
+      background: var(--accent-dim);
+      border: 1px solid rgba(200,240,74,0.25);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 12px 0;
+    }
+
+    .callout p {
+      font-size: 14px;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .callout strong { color: var(--accent); }
+
+    /* DIVIDER */
+    .doc-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 80px 0;
+    }
+
+    /* CONTACT FOOTER */
+    .contact-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      margin-top: 64px;
+    }
+
+    .contact-block h4 {
+      font-family: var(--serif);
+      font-size: 22px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .contact-block p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .contact-block a {
+      display: inline-block;
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #0d0d0f;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-block a:hover { opacity: 0.85; }
+
+    /* PAGE FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <span class="wordmark">Moneystep</span>
+      <ul class="nav-links">
+        <li><a href="#privacy">Privacy Policy</a></li>
+        <li><a href="#terms">Terms of Service</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <span class="hero-label">Legal Documents</span>
+    <h1>Privacy &amp; Terms</h1>
+    <p>These documents govern your use of the Moneystep platform. Please read them carefully before using the app.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Effective Date</span>
+        <span class="meta-value">May 31, 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Entity</span>
+        <span class="meta-value">Moneystep LLC</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Governing Law</span>
+        <span class="meta-value">State of Texas</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Contact</span>
+        <span class="meta-value">moneystepapp@gmail.com</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toc-wrapper">
+    <div class="toc-grid">
+      <a class="toc-card" href="#pp-data">
+        <span class="toc-number">1</span>
+        <div class="toc-text">
+          <span class="toc-section">Privacy</span>
+          <span class="toc-title">Data We Collect</span>
+        </div>
+      </a>
+      <a class="toc-card" href="#pp-health">
+        <span class="toc-number">2</span>
+        <div class="toc-text">
+          <span class="toc-section">Privacy</span>
+          <span class="toc-title">Health &amp; Step Data</span>
+        </div>
+      </a>
+      <a class="toc-card" href="#pp-third-party">
+        <span class="toc-number">3</span>
+        <div class="toc-text">
+          <span class="toc-section">Privacy</span>
+          <span class="toc-title">Third-Party Services</span>
+        </div>
+      </a>
+      <a class="toc-card" href="#pp-sharing">
+        <span class="toc-number">4</span>
+        <div class="toc-text">
+          <span class="toc-section">Privacy</span>
+          <span class="toc-title">Data Sharing &amp; Sale</span>
+        </div>
+      </a>
+      <a class="toc-card" href="#tos-eligibility">
+        <span class="toc-number">5</span>
+        <div class="toc-text">
+          <span class="toc-section">Terms</span>
+          <span class="toc-title">Eligibility</span>
+        </div>
+      </a>
+      <a class="toc-card" href="#tos-fees">
+        <span class="toc-number">6</span>
+        <div class="toc-text">
+          <span class="toc-section">Terms</span>
+          <span class="toc-title">Entry Fees &amp; Refunds</span>
+        </div>
+      </a>
+      <a class="toc-card" href="#tos-health">
+        <span class="toc-number">7</span>
+        <div class="toc-text">
+          <span class="toc-section">Terms</span>
+          <span class="toc-title">Health &amp; Safety</span>
+        </div>
+      </a>
+      <a class="toc-card" href="#tos-tax">
+        <span class="toc-number">8</span>
+        <div class="toc-text">
+          <span class="toc-section">Terms</span>
+          <span class="toc-title">Tax Obligations</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!--              PRIVACY POLICY             -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <section class="doc-section" id="privacy">
+      <div class="section-header">
+        <span class="section-tag">Privacy Policy</span>
+        <h2>How We Handle Your Data</h2>
+      </div>
+
+      <article>
+
+        <div class="clause" id="pp-data">
+          <h3>1. Data We Collect</h3>
+          <p>When you create an account and use Moneystep, we collect the following information:</p>
+          <ul>
+            <li>Account information: name, username, email address, phone number, and profile photo</li>
+            <li>Financial information: transaction history, entry fees paid, winnings received, and wallet balance — processed through Stripe</li>
+            <li>Step count data: daily step totals sourced from Apple HealthKit or Google Health Connect</li>
+            <li>Device information: device token for push notifications, operating system, and app version</li>
+            <li>Usage data: challenge participation history, competition results, and in-app activity</li>
+          </ul>
+        </div>
+
+        <div class="clause" id="pp-health">
+          <h3>2. Health &amp; Step Data</h3>
+          <p>Moneystep accesses your step count data from Apple HealthKit (iOS) or Google Health Connect (Android) for the sole purpose of tracking your performance in challenges.</p>
+          <div class="callout">
+            <p><strong>Step data retention:</strong> We store only your step data from the current and previous day. Step data older than 48 hours is automatically deleted from our servers on a rolling basis. We access historical step data from your health app to calculate your rank tier but do not store it.</p>
+          </div>
+          <p>We do not use your health data for advertising, sell it to third parties, or share it with any entity outside of Moneystep LLC for any purpose other than operating the app.</p>
+          <p>You may revoke HealthKit or Health Connect permissions at any time through your device settings. Revoking access will prevent step tracking from functioning and may affect your ability to participate in challenges.</p>
+        </div>
+
+        <div class="clause" id="pp-third-party">
+          <h3>3. Third-Party Services</h3>
+          <p>Moneystep uses the following third-party services to operate the platform:</p>
+          <ul>
+            <li><strong>Google Firebase</strong> — backend infrastructure, database, authentication, and push notifications. Data is stored on Firebase servers subject to Google's privacy policies.</li>
+            <li><strong>Stripe</strong> — payment processing for entry fees and prize payouts. Moneystep does not store your full payment card information. Stripe's privacy policy governs their handling of your financial data.</li>
+            <li><strong>Apple HealthKit / Google Health Connect</strong> — read-only access to step count data on your device.</li>
+          </ul>
+          <p>We do not integrate advertising networks, analytics SDKs that track behavior across apps, or any other third-party data brokers.</p>
+        </div>
+
+        <div class="clause" id="pp-sharing">
+          <h3>4. Data Sharing &amp; Sale</h3>
+          <p>Moneystep LLC does not sell, rent, or trade your personal data to any third party under any circumstances.</p>
+          <p>We may disclose information only in the following limited circumstances:</p>
+          <ul>
+            <li>When required by law, court order, or valid legal process</li>
+            <li>To comply with tax reporting obligations, including IRS requirements for issuing Form 1099</li>
+            <li>To prevent fraud, protect the safety of users, or enforce these terms</li>
+            <li>In connection with a merger, acquisition, or sale of all or substantially all assets of Moneystep LLC, in which case users will be notified</li>
+          </ul>
+        </div>
+
+        <div class="clause">
+          <h3>5. Data Security</h3>
+          <p>We use industry-standard security practices including encrypted data transmission (TLS), Firebase security rules restricting data access to authenticated users, and Stripe's PCI-compliant infrastructure for all payment data. No method of electronic storage is 100% secure. We cannot guarantee absolute security but are committed to protecting your information.</p>
+        </div>
+
+        <div class="clause">
+          <h3>6. Data Retention &amp; Deletion</h3>
+          <p>You may request deletion of your account and associated data at any time by contacting us at moneystepapp@gmail.com. We will process deletion requests within 30 days. Note that certain financial records may be retained as required by law, including tax reporting obligations.</p>
+        </div>
+
+        <div class="clause">
+          <h3>7. Children's Privacy</h3>
+          <p>Moneystep is strictly for users aged 18 and older. We do not knowingly collect personal information from anyone under 18. If we become aware that a minor has created an account, we will terminate the account and delete all associated data immediately.</p>
+        </div>
+
+        <div class="clause">
+          <h3>8. Changes to This Policy</h3>
+          <p>We may update this Privacy Policy from time to time. We will notify users of material changes via push notification or email. Continued use of the app after changes take effect constitutes acceptance of the updated policy. The effective date at the top of this page will reflect the most recent revision.</p>
+        </div>
+
+      </article>
+    </section>
+
+    <hr class="doc-divider" />
+
+    <!-- ═══════════════════════════════════════ -->
+    <!--           TERMS OF SERVICE              -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <section class="doc-section" id="terms">
+      <div class="section-header">
+        <span class="section-tag">Terms of Service</span>
+        <h2>Rules of the Platform</h2>
+      </div>
+
+      <article>
+
+        <div class="clause">
+          <h3>1. Agreement</h3>
+          <p>By downloading, installing, or using the Moneystep application, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the app. These terms constitute a legally binding agreement between you and Moneystep LLC.</p>
+        </div>
+
+        <div class="clause" id="tos-eligibility">
+          <h3>2. Eligibility</h3>
+          <p>To use Moneystep you must:</p>
+          <ul>
+            <li>Be at least 18 years of age</li>
+            <li>Be a resident of the United States</li>
+            <li>Reside in a jurisdiction where skill-based competitions and prize contests are permitted by applicable law</li>
+            <li>Have a valid payment method capable of processing through Stripe</li>
+            <li>Not be prohibited from participating in skill-based competitions by any applicable law or regulation</li>
+          </ul>
+          <p>Moneystep is available only where permitted by law. It is your responsibility to determine whether participating in paid competitions is lawful in your jurisdiction. Moneystep LLC makes no representation that the app is available or appropriate in all locations.</p>
+        </div>
+
+        <div class="clause">
+          <h3>3. Skill-Based Competition</h3>
+          <p>Moneystep is a skill-based competition platform. Challenge outcomes are determined by step count performance, which is influenced by effort, physical fitness, activity level, and health — not by chance. By participating, you acknowledge that results are based on skill and physical effort and that no outcome is guaranteed.</p>
+        </div>
+
+        <div class="clause" id="tos-fees">
+          <h3>4. Entry Fees, Refunds, and Payouts</h3>
+          <div class="callout">
+            <p><strong>No Refunds Policy:</strong> All entry fees are final and non-refundable under any circumstances, including but not limited to voluntary exit from a challenge, injury, illness, device malfunction, loss of internet connectivity, or dissatisfaction with results.</p>
+          </div>
+          <p>Entry fees are collected via Stripe at the time of enrollment. A platform fee is deducted from the prize pool before distribution to winners. The platform fee percentage is displayed on each challenge's detail page before you enroll.</p>
+          <p>Prize payouts are distributed to your in-app wallet upon challenge settlement. You may withdraw funds to your linked payment method at any time subject to Stripe's processing times.</p>
+          <p>If a challenge is cancelled by Moneystep LLC due to insufficient participation or technical reasons, entry fees will be refunded in full. This is the only circumstance under which a refund will be issued.</p>
+        </div>
+
+        <div class="clause">
+          <h3>5. Exiting a Challenge</h3>
+          <p>You may voluntarily exit a challenge at any time before or after it begins. The following rules apply:</p>
+          <ul>
+            <li><strong>Before the challenge starts:</strong> Your Stripe payment hold will be released and you will be free to join another challenge. No entry fee is charged.</li>
+            <li><strong>After the challenge starts:</strong> Your entry fee is non-refundable. You will be removed from the challenge and leaderboard but will not receive any refund. You will be free to join another challenge after exiting.</li>
+          </ul>
+          <p>Exits are recorded in your career statistics. Exiting a mid-challenge counts as a last-place finish for statistical purposes.</p>
+        </div>
+
+        <div class="clause" id="tos-health">
+          <h3>6. Health, Safety, and Assumption of Risk</h3>
+          <div class="callout">
+            <p><strong>Important:</strong> Physical exercise carries inherent risk of injury, particularly for individuals with pre-existing health conditions, prior injuries, or those who are not regularly physically active.</p>
+          </div>
+          <p>By participating in Moneystep challenges, you acknowledge and agree that:</p>
+          <ul>
+            <li>You are voluntarily choosing to engage in physical activity and do so entirely at your own risk</li>
+            <li>You have consulted or will consult with a qualified healthcare provider before beginning any new exercise program</li>
+            <li>Moneystep LLC is not responsible for any injury, illness, death, or adverse health outcome arising from your participation in challenges or any physical activity undertaken in connection with the app</li>
+            <li>Moneystep LLC makes no representations regarding the safety, appropriateness, or suitability of any level of physical activity for your individual health situation</li>
+            <li>You release Moneystep LLC and its officers, employees, and agents from any and all claims, demands, or causes of action arising from your participation in physical activity in connection with the platform</li>
+          </ul>
+        </div>
+
+        <div class="clause" id="tos-tax">
+          <h3>7. Tax Obligations and 1099 Reporting</h3>
+          <p>You are solely responsible for all taxes arising from prizes and winnings earned through Moneystep. In accordance with United States tax law:</p>
+          <ul>
+            <li>If your cumulative gross winnings in a single calendar year equal or exceed <strong>$600</strong>, Moneystep LLC is required to issue you a Form 1099 and report your earnings to the IRS</li>
+            <li>Upon crossing the $600 threshold, you will be required to provide a valid Social Security Number (SSN) or Employer Identification Number (EIN) before further payouts may be processed</li>
+            <li>Failure to provide required tax information may result in a hold on your winnings until the information is received</li>
+            <li>You agree to provide accurate and complete tax information upon request and to notify us of any changes</li>
+          </ul>
+          <p>Moneystep LLC is not responsible for any tax liability you incur as a result of winnings. We recommend consulting a tax professional regarding your obligations.</p>
+        </div>
+
+        <div class="clause">
+          <h3>8. Prohibited Conduct</h3>
+          <p>You agree not to:</p>
+          <ul>
+            <li>Use any device, software, or method to artificially inflate your step count, including but not limited to step-counting machines, placing your device on animals or moving vehicles, or any other manipulation of step data</li>
+            <li>Create multiple accounts or participate under false identity</li>
+            <li>Attempt to exploit bugs or vulnerabilities in the platform</li>
+            <li>Use the platform if you are under 18 or reside in a jurisdiction where such competitions are prohibited</li>
+            <li>Engage in any conduct that disrupts, damages, or impairs the platform or other users' experience</li>
+          </ul>
+          <p>Violation of these prohibitions may result in immediate account termination, forfeiture of any wallet balance, and potential legal action. Step data is verified against Apple HealthKit and Google Health Connect sources. We reserve the right to investigate suspicious activity and disqualify participants.</p>
+        </div>
+
+        <div class="clause">
+          <h3>9. Disclaimers and Limitation of Liability</h3>
+          <p>Moneystep is provided "as is" and "as available" without warranties of any kind, express or implied. We do not warrant that the app will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
+          <p>To the maximum extent permitted by applicable law, Moneystep LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or goodwill, arising from your use of or inability to use the platform.</p>
+          <p>Our total aggregate liability to you for any claims arising from these terms or your use of the platform shall not exceed the total entry fees paid by you in the 90 days preceding the claim.</p>
+        </div>
+
+        <div class="clause">
+          <h3>10. Dispute Resolution and Waiver of Class Action</h3>
+          <p>Any dispute arising from these Terms shall be resolved by binding individual arbitration under the rules of the American Arbitration Association, conducted in Texas. You waive any right to participate in a class action lawsuit or class-wide arbitration against Moneystep LLC. This waiver is a material condition of your use of the platform.</p>
+        </div>
+
+        <div class="clause">
+          <h3>11. Governing Law</h3>
+          <p>These Terms of Service are governed by and construed in accordance with the laws of the State of Texas, without regard to conflict of law principles. Any legal proceedings not subject to arbitration shall be brought exclusively in the state or federal courts located in Texas.</p>
+        </div>
+
+        <div class="clause">
+          <h3>12. Account Termination</h3>
+          <p>Moneystep LLC reserves the right to suspend or terminate your account at any time for violation of these terms, suspicious activity, or any reason we deem necessary to protect the platform and its users. Upon termination, any pending winnings from ongoing challenges may be forfeited if the termination is due to a violation of these terms.</p>
+        </div>
+
+        <div class="clause">
+          <h3>13. Changes to Terms</h3>
+          <p>We reserve the right to modify these Terms at any time. Material changes will be communicated via push notification or email at least 14 days before taking effect. Continued use of the app after the effective date constitutes acceptance of the updated terms.</p>
+        </div>
+
+      </article>
+    </section>
+
+    <div class="contact-block">
+      <h4>Questions about these documents?</h4>
+      <p>We're happy to clarify anything. Reach out to us directly.</p>
+      <a href="mailto:moneystepapp@gmail.com">moneystepapp@gmail.com</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Moneystep LLC · All rights reserved · <a href="#privacy">Privacy Policy</a> · <a href="#terms">Terms of Service</a></p>
+  </footer>
+
+</body>
+</html>
